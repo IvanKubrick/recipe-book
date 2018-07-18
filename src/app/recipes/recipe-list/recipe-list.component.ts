@@ -8,6 +8,7 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeListComponent implements OnInit {
     recipes: Recipe[] = [
+        new Recipe('Test Recipe', 'Test recipe desc', 'https://www.fairfaxcounty.gov/news2/wp-content/uploads/2016/05/meal-620x264.jpg'),
         new Recipe('Test Recipe', 'Test recipe desc', 'https://www.fairfaxcounty.gov/news2/wp-content/uploads/2016/05/meal-620x264.jpg')
     ];
 
