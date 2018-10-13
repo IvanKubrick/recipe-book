@@ -2,7 +2,6 @@ import { RecipeService } from './../recipe.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '../../../../node_modules/@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '../../../../node_modules/@angular/forms';
-import { relative } from 'path';
 
 @Component({
     selector: 'app-recipe-edit',
@@ -50,8 +49,11 @@ export class RecipeEditComponent implements OnInit {
     }
 
     onCancel() {
-        console.log(1)
         this.router.navigate(['../'], {relativeTo: this.route});
+    }
+
+    onDeleteIngredient(index: number) {
+        (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
     }
 
     private initForm() {
