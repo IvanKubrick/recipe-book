@@ -27,7 +27,11 @@ export class ShoppingListService {
         this.ingredients.push(...ingredients);
     }
 
-    updateIngredient(index: number, newIngredient: Ingredient) {
+    public updateIngredient(index: number, newIngredient: Ingredient) {
         this.ingredients[index] = newIngredient;
+    }
+
+    public deleteIngredient (index: number) {
+        this.ingredients.splice(index, 1)
     }
 }
