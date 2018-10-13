@@ -6,7 +6,7 @@ import { Ingredient } from '../shared/ingredient.model';
 @Injectable()
 export class ShoppingListService {
     startedEditing = new Subject<number>()
-    private ingredients: Ingredient[] = [
+    ingredients: Ingredient[] = [
         new Ingredient('Apples', 5),
         new Ingredient('Oranges', 2)
     ];
@@ -32,6 +32,6 @@ export class ShoppingListService {
     }
 
     public deleteIngredient (index: number) {
-        this.ingredients.splice(index, 1)
+        this.ingredients.splice(index, 1);
     }
 }
