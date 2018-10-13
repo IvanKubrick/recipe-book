@@ -18,7 +18,7 @@ export class RecipeService {
         ),
         new Recipe('Hamburger',
             'Hamburger description',
-            'http://westendpizzahartford.com/wp-content/uploads/2017/12/hamburger.png',
+            'https://d1nqx6es26drid.cloudfront.net/app/uploads/2015/04/04043817/product-hamburger.png',
             [
                 new Ingredient('burger', 1),
                 new Ingredient('ham', 1),
