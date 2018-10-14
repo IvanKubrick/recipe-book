@@ -9,7 +9,6 @@ import { AuthService } from './../auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
   constructor(
       private authService: AuthService
   ) { }
@@ -22,5 +21,4 @@ export class SignupComponent implements OnInit {
     const password = form.value.password;
     this.authService.signupUser(email, password);
   }
-
 }
