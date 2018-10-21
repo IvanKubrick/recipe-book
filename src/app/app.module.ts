@@ -14,12 +14,14 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
         HeaderComponent,
+        HomeComponent,
     ],
     imports: [
         BrowserModule,
