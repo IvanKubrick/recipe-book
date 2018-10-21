@@ -1,5 +1,4 @@
 import { AuthModule } from './auth/auth.module';
-import { RecipesModule } from './recipes/recipes.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -27,7 +26,6 @@ import { HomeComponent } from './home/home.component';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        RecipesModule,
         SharedModule,
         ShoppingListModule,
         AuthModule
