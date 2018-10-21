@@ -12,8 +12,8 @@ import { NgForm } from '@angular/forms';
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
     editedItem: Ingredient;
+    editMode: boolean = false;
 
-    private editMode: boolean = false;
     private editedItemIndex: number;
     private subscriptions: Subscription[] = [];
 

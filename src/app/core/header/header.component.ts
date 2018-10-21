@@ -12,7 +12,7 @@ import { DataStorageService } from './../../shared/data-storage.service';
 export class HeaderComponent {
     constructor(
         private dataStorageService: DataStorageService,
-        private authService: AuthService
+        public authService: AuthService
     ){}
     onSaveData() {
         this.dataStorageService.storeRecipes().subscribe(response => {

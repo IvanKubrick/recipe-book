@@ -13,6 +13,10 @@ export class RecipeEditComponent implements OnInit {
     editMode: boolean = false;
     recipeForm: FormGroup;
 
+    get ingredientsControls() {
+        return <FormArray>this.recipeForm.get('ingredients');
+    }
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
