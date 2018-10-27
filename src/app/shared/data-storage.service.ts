@@ -16,24 +16,15 @@ export class DataStorageService {
     ){}
 
     storeRecipes(): Observable<any> {
-        console.log('save', this.recipeService.getRecipes());
-        const token = this.authService.getToken();
         return this.httpClient.put(
             `https://ng-recipe-book-c1273.firebaseio.com/recipes.json`,
-            this.recipeService.getRecipes(),
-            {
-                params: new HttpParams().set('auth', token)
-            }
+            this.recipeService.getRecipes()
         );
     }
 
     getRecipes() {
-        const token = this.authService.getToken();
         this.httpClient.get<Recipe[]>(
-            `https://ng-recipe-book-c1273.firebaseio.com/recipes.json`,
-            {
-                params: new HttpParams().set('auth', token)
-            }
+            `https://ng-recipe-book-c1273.firebaseio.com/recipes.json`
         )
         .pipe(
             map(recipes => {
