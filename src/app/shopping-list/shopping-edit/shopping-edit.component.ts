@@ -40,6 +40,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this.store.dispatch(new ShoppingListActions.StopEdit());
         this.subscriptions.forEach(s => s.unsubscribe());
     }
 
