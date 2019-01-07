@@ -12,19 +12,19 @@ import { AuthInterceptor } from './../shared/auth.interceptor';
 import { LoggingInterceptor } from './../shared/logging.interceptor';
 
 @NgModule({
-    declarations: [HeaderComponent, HomeComponent],
-    imports: [SharedModule, AppRoutingModule],
-    exports: [AppRoutingModule, HeaderComponent],
-    providers: [
-        RecipeService,
-        DataStorageService,
-        AuthService,
-        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: LoggingInterceptor,
-            multi: true
-        }
-    ]
+  declarations: [HeaderComponent, HomeComponent],
+  imports: [SharedModule, AppRoutingModule],
+  exports: [AppRoutingModule, HeaderComponent],
+  providers: [
+    RecipeService,
+    DataStorageService,
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptor,
+      multi: true
+    }
+  ]
 })
 export class CoreModule {}

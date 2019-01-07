@@ -2,70 +2,70 @@ import { Ingredient } from '../../shared/ingredient.model';
 import * as ShoppingListActions from './shopping-list.actions';
 
 export interface State {
-    ingredients: Ingredient[];
-    editedIngredient: Ingredient;
-    editedIngredientIndex: number;
+  ingredients: Ingredient[];
+  editedIngredient: Ingredient;
+  editedIngredientIndex: number;
 }
 
 const initialState: State = {
-    ingredients: [new Ingredient('Apples', 5), new Ingredient('Oranges', 2)],
-    editedIngredient: null,
-    editedIngredientIndex: -1
+  ingredients: [new Ingredient('Apples', 5), new Ingredient('Oranges', 2)],
+  editedIngredient: null,
+  editedIngredientIndex: -1
 };
 
 export function shoppingListReducer(
-    state = initialState,
-    action: ShoppingListActions.ShoppingListActions
+  state = initialState,
+  action: ShoppingListActions.ShoppingListActions
 ) {
-    switch (action.type) {
-        case ShoppingListActions.ADD_INGREDIENT:
-            return {
-                ...state,
-                ingredients: [...state.ingredients, action.payload]
-            };
-        case ShoppingListActions.ADD_INGREDIENTS:
-            return {
-                ...state,
-                ingredients: [...state.ingredients, ...action.payload]
-            };
-        case ShoppingListActions.UPDATE_INGREDIENT:
-            const index = state.editedIngredientIndex;
-            const ingredient = state.ingredients[index];
-            const updatedIngredient = {
-                ...ingredient,
-                ...action.payload.ingredient
-            };
-            const ingredients = [...state.ingredients];
-            ingredients[index] = updatedIngredient;
-            return {
-                ...state,
-                ingredients: ingredients,
-                editedIngredient: null,
-                editedIngredientIndex: -1
-            };
-        case ShoppingListActions.DELETE_INGREDIENT:
-            const ingredients1 = [...state.ingredients];
-            ingredients1.splice(state.editedIngredientIndex, 1);
-            return {
-                ...state,
-                ingredients: ingredients1,
-                editedIngredient: null,
-                editedIngredientIndex: -1
-            };
-        case ShoppingListActions.START_EDIT:
-            const editedIngredient = { ...state.ingredients[action.payload] };
-            return {
-                ...state,
-                editedIngredient: editedIngredient,
-                editedIngredientIndex: action.payload
-            };
-        case ShoppingListActions.STOP_EDIT:
-            return {
-                ...state,
-                editedIngredient: null,
-                editedIngredientIndex: -1
-            };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case ShoppingListActions.ADD_INGREDIENT:
+      return {
+        ...state,
+        ingredients: [...state.ingredients, action.payload]
+      };
+    case ShoppingListActions.ADD_INGREDIENTS:
+      return {
+        ...state,
+        ingredients: [...state.ingredients, ...action.payload]
+      };
+    case ShoppingListActions.UPDATE_INGREDIENT:
+      const index = state.editedIngredientIndex;
+      const ingredient = state.ingredients[index];
+      const updatedIngredient = {
+        ...ingredient,
+        ...action.payload.ingredient
+      };
+      const ingredients = [...state.ingredients];
+      ingredients[index] = updatedIngredient;
+      return {
+        ...state,
+        ingredients: ingredients,
+        editedIngredient: null,
+        editedIngredientIndex: -1
+      };
+    case ShoppingListActions.DELETE_INGREDIENT:
+      const ingredients1 = [...state.ingredients];
+      ingredients1.splice(state.editedIngredientIndex, 1);
+      return {
+        ...state,
+        ingredients: ingredients1,
+        editedIngredient: null,
+        editedIngredientIndex: -1
+      };
+    case ShoppingListActions.START_EDIT:
+      const editedIngredient = { ...state.ingredients[action.payload] };
+      return {
+        ...state,
+        editedIngredient: editedIngredient,
+        editedIngredientIndex: action.payload
+      };
+    case ShoppingListActions.STOP_EDIT:
+      return {
+        ...state,
+        editedIngredient: null,
+        editedIngredientIndex: -1
+      };
+    default:
+      return state;
+  }
 }

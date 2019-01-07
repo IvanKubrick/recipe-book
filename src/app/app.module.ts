@@ -12,17 +12,17 @@ import { CoreModule } from './core/core.module';
 import { reducers } from './store/app.reducers';
 
 @NgModule({
-    declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        SharedModule,
-        ShoppingListModule,
-        AuthModule,
-        CoreModule,
-        StoreModule.forRoot(reducers)
-    ],
-    bootstrap: [AppComponent]
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    SharedModule,
+    ShoppingListModule,
+    AuthModule,
+    CoreModule,
+    StoreModule.forRoot(reducers)
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

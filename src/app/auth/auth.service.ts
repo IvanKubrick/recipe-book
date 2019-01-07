@@ -8,46 +8,43 @@ import * as AuthActions from './store/auth.actions';
 
 @Injectable()
 export class AuthService {
-    constructor(
-        private router: Router,
-        private store: Store<fromApp.AppState>
-    ) {}
+  constructor(private router: Router, private store: Store<fromApp.AppState>) {}
 
-    signupUser(email: string, password: string) {
+  signupUser(email: string, password: string) {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        this.store.dispatch(new AuthActions.Signup());
         firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then(() => {
-                this.store.dispatch(new AuthActions.Signup());
-                firebase
-                    .auth()
-                    .currentUser.getIdToken()
-                    .then((token: string) => {
-                        this.store.dispatch(new AuthActions.SetToken(token));
-                    });
-            })
-            .catch(error => console.log(error));
-    }
+          .auth()
+          .currentUser.getIdToken()
+          .then((token: string) => {
+            this.store.dispatch(new AuthActions.SetToken(token));
+          });
+      })
+      .catch(error => console.log(error));
+  }
 
-    signinUser(email: string, password: string) {
+  signinUser(email: string, password: string) {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(response => {
+        this.store.dispatch(new AuthActions.Signin());
+        this.router.navigate(['/']);
         firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .then(response => {
-                this.store.dispatch(new AuthActions.Signin());
-                this.router.navigate(['/']);
-                firebase
-                    .auth()
-                    .currentUser.getIdToken()
-                    .then((token: string) => {
-                        this.store.dispatch(new AuthActions.SetToken(token));
-                    });
-            })
-            .catch(error => console.log(error));
-    }
+          .auth()
+          .currentUser.getIdToken()
+          .then((token: string) => {
+            this.store.dispatch(new AuthActions.SetToken(token));
+          });
+      })
+      .catch(error => console.log(error));
+  }
 
-    logout() {
-        firebase.auth().signOut();
-        this.store.dispatch(new AuthActions.Logout());
-    }
+  logout() {
+    firebase.auth().signOut();
+    this.store.dispatch(new AuthActions.Logout());
+  }
 }
